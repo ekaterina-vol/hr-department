@@ -15,6 +15,10 @@ public class PostRepositoryImpl implements PostRepository {
     public Optional<Post> create(Post entity) {
         Long nextId = currentId.getAndIncrement();
 
+        if (findByDepartmentAndTitle(entity.getDepartment(), entity.getTitle()).isPresent()) {
+            return Optional.empty();
+        }
+
         Post postToSave = Post.builder()
                 .postId(nextId)
                 .title(entity.getTitle())
@@ -44,8 +48,12 @@ public class PostRepositoryImpl implements PostRepository {
         Long id = entity.getPostId();
         Post curPost = postStorage.get(id);
         if (entity.getTitle().equals(curPost.getTitle()) &&
-        entity.getDepartment().equals(curPost.getDepartment())) {
+                entity.getDepartment().equals(curPost.getDepartment())) {
             return Optional.of(curPost);
+        }
+
+        if (findByDepartmentAndTitle(entity.getDepartment(), entity.getTitle()).isPresent()) {
+            return Optional.empty();
         }
 
         postStorage.put(entity.getPostId(), entity);
@@ -68,6 +76,13 @@ public class PostRepositoryImpl implements PostRepository {
     public Optional<Post> findByTitle(String title) {
         return postStorage.values().stream()
                 .filter(post -> title.equals(post.getTitle()))
+                .findFirst();
+    }
+
+    private Optional<Post> findByDepartmentAndTitle(String department, String title) {
+        return postStorage.values().stream()
+                .filter(post -> post.getDepartment().equals(department)
+                        && post.getTitle().equals(title))
                 .findFirst();
     }
 }
