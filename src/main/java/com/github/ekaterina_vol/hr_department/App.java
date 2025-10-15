@@ -1,4 +1,4 @@
-package com.github.ekaterina-vol.hr-department;
+package com.github.ekaterina_vol.hr_department;
 
 /**
  * Hello world!
