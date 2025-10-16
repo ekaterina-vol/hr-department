@@ -66,12 +66,12 @@ public class PostService {
         }
     }
     private void validateTitle(String title) {
-        if (title == null) {
+        if (title == null || !title.isEmpty()) {
             throw new IllegalArgumentException("Отсутствует название должности");
         }
     }
     private void validateDepartment(String department) {
-        if (department == null) {
+        if (department == null || !department.isEmpty()) {
             throw new IllegalArgumentException("Отсутствует название отдела");
         }
     }
