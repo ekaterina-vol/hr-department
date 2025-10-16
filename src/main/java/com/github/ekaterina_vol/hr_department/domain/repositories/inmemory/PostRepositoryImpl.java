@@ -41,7 +41,7 @@ public class PostRepositoryImpl implements PostRepository {
 
     @Override
     public Optional<Post> update(Post entity) {
-        if (entity == null || entity.getPostId() == null || !postStorage.containsKey(entity.getPostId())) {
+        if (!postStorage.containsKey(entity.getPostId())) {
             return Optional.empty();
         }
 
@@ -56,8 +56,14 @@ public class PostRepositoryImpl implements PostRepository {
             return Optional.empty();
         }
 
-        postStorage.put(entity.getPostId(), entity);
-        return Optional.of(entity);
+        Post updatedPost = Post.builder()
+                .postId(entity.getPostId())
+                .title(entity.getTitle())
+                .department(entity.getDepartment())
+                .build();
+
+        postStorage.put(updatedPost.getPostId(), updatedPost);
+        return Optional.of(updatedPost);
     }
 
     @Override
