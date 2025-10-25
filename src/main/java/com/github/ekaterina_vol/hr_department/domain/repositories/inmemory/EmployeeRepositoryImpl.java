@@ -13,6 +13,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     private final AtomicLong currentId = new AtomicLong(1);
     @Override
     public Optional<Employee> create(Employee entity) {
+        if (employeeStorage.containsKey(entity.getEmployeeId())) {
+            return Optional.empty();
+        }
+
         Long nextId = currentId.getAndIncrement();
 
         Employee employeeToSave = Employee.builder()
