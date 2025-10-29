@@ -1,7 +1,6 @@
 package com.github.ekaterina_vol.hr_department.infrastructure.services.impl;
 
 import com.github.ekaterina_vol.hr_department.domain.entities.Employee;
-import com.github.ekaterina_vol.hr_department.domain.entities.Employment;
 import com.github.ekaterina_vol.hr_department.domain.repositories.EmployeeRepository;
 import com.github.ekaterina_vol.hr_department.infrastructure.services.EmployeeService;
 

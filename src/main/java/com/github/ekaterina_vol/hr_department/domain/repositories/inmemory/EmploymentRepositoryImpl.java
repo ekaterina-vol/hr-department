@@ -1,17 +1,21 @@
 package com.github.ekaterina_vol.hr_department.domain.repositories.inmemory;
 
-import com.github.ekaterina_vol.hr_department.domain.entities.Employee;
 import com.github.ekaterina_vol.hr_department.domain.entities.Employment;
 import com.github.ekaterina_vol.hr_department.domain.repositories.EmploymentRepository;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 public class EmploymentRepositoryImpl implements EmploymentRepository {
     private final Map<Long, Employment> employmentStorage = new HashMap<>();
     private final AtomicLong currentId = new AtomicLong(1);
+
     @Override
     public Optional<Employment> create(Employment entity) {
         if (employmentStorage.containsKey(entity.getEmploymentId())) {

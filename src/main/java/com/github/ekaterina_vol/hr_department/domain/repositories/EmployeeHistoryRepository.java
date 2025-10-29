@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface EmployeeHistoryRepository extends Repository<EmployeeHistory, Long> {
     List<EmployeeHistory> findByEmployeeId(Long employeeId);
+
     List<EmployeeHistory> findByChangeDate(LocalDateTime changeDate);
 }

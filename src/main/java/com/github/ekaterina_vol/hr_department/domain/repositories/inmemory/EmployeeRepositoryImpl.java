@@ -4,13 +4,18 @@ import com.github.ekaterina_vol.hr_department.domain.entities.Employee;
 import com.github.ekaterina_vol.hr_department.domain.repositories.EmployeeRepository;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
     private final Map<Long, Employee> employeeStorage = new HashMap<>();
     private final AtomicLong currentId = new AtomicLong(1);
+
     @Override
     public Optional<Employee> create(Employee entity) {
         if (employeeStorage.containsKey(entity.getEmployeeId())) {
