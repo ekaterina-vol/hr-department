@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface PostRepository extends Repository<Post, Long> {
     List<Post> findByDepartment(String department);
-    Optional<Post> findByTitle(String title);
+    List<Post> findByTitle(String title);
 }

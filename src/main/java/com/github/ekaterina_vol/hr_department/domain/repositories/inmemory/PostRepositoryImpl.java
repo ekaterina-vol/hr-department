@@ -82,10 +82,10 @@ public class PostRepositoryImpl implements PostRepository {
     }
 
     @Override
-    public Optional<Post> findByTitle(String title) {
+    public List<Post> findByTitle(String title) {
         return postStorage.values().stream()
                 .filter(post -> title.equals(post.getTitle()))
-                .findFirst();
+                .collect(Collectors.toList());
     }
 
     private Optional<Post> findByDepartmentAndTitle(String department, String title) {

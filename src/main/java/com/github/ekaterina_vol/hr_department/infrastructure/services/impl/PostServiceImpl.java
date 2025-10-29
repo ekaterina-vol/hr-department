@@ -1,5 +1,6 @@
 package com.github.ekaterina_vol.hr_department.infrastructure.services.impl;
 
+import com.github.ekaterina_vol.hr_department.domain.entities.Employment;
 import com.github.ekaterina_vol.hr_department.domain.entities.Post;
 import com.github.ekaterina_vol.hr_department.domain.repositories.PostRepository;
 import com.github.ekaterina_vol.hr_department.infrastructure.services.PostService;
@@ -82,15 +83,24 @@ public class PostServiceImpl implements PostService {
         return postRepository.deleteById(id);
     }
 
-    // дописать валидацию
     public List<Post> findByDepartment(String department) {
         validateDepartment(department);
-        return postRepository.findByDepartment(department);
+
+        List<Post> posts = postRepository.findByDepartment(department);
+        if (posts.isEmpty()) {
+            throw new IllegalArgumentException("Отдела '" + department + "' не существует");
+        }
+        return posts;
     }
 
-    public Post findByTitle(String title) {
+    public List<Post> findByTitle(String title) {
         validateTitle(title);
-        return postRepository.findByTitle(title).get();
+
+        List<Post> posts = postRepository.findByTitle(title);
+        if (posts.isEmpty()) {
+            throw new IllegalArgumentException("Должности '" + title + "' не существует");
+        }
+        return posts;
     }
 
     private void validatePostId(Long postId) {

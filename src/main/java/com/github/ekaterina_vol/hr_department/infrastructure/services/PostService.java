@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface PostService extends Service<Post, Long> {
     List<Post> findByDepartment(String department);
 
-    Post findByTitle(String title);
+    List<Post> findByTitle(String title);
 }
