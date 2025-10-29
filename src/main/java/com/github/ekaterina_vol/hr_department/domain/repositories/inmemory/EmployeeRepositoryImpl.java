@@ -96,10 +96,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public List<Employee> findByCreatedData(LocalDateTime createdData) {
+    public List<Employee> findByCreatedDate(LocalDateTime createdDate) {
         return employeeStorage.values().stream()
                 .filter(employee ->
-                        createdData.equals(employee.getCreatedAt()))
+                        createdDate.equals(employee.getCreatedAt()))
                 .collect(Collectors.toList());
     }
 }

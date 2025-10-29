@@ -1,6 +1,7 @@
 package com.github.ekaterina_vol.hr_department.infrastructure.services.impl;
 
 import com.github.ekaterina_vol.hr_department.domain.entities.Employee;
+import com.github.ekaterina_vol.hr_department.domain.entities.Employment;
 import com.github.ekaterina_vol.hr_department.domain.repositories.EmployeeRepository;
 import com.github.ekaterina_vol.hr_department.infrastructure.services.EmployeeService;
 
@@ -90,20 +91,40 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
-    //добавить бизнес методы
+    //добавить бизнес методы!!!
     @Override
     public Employee updateLastName(Long employeeId, String newLastName) {
-        return null;
+        validateEmployeeId(employeeId);
+        validateLastName(newLastName);
+
+        Optional<Employee> curEmployee = employeeRepository.updateLastName(employeeId, newLastName);
+        if (!curEmployee.isPresent()) {
+            throw new IllegalArgumentException("Работника с id=" + employeeId + " не существует");
+        }
+        return curEmployee.get();
     }
 
     @Override
     public List<Employee> findByFirstNameAndLastName(String firstName, String lastName) {
-        return null;
+        validateFirstName(firstName);
+        validateLastName(lastName);
+
+        List<Employee> employees = employeeRepository.findByFirstNameAndLastName(firstName, lastName);
+        if (employees.isEmpty()) {
+            throw new IllegalArgumentException("Отсутствуют работники с фамилией и именем " + firstName + " " + lastName);
+        }
+        return employees;
     }
 
     @Override
-    public List<Employee> findByCreatedData(LocalDateTime createdData) {
-        return null;
+    public List<Employee> findByCreatedDate(LocalDateTime createdDate) {
+        validateCreatedDate(createdDate);
+
+        List<Employee> employees = employeeRepository.findByCreatedDate(createdDate);
+        if (employees.isEmpty()) {
+            throw new IllegalArgumentException("Отсутствуют записи созданные " + createdDate);
+        }
+        return employees;
     }
 
 

@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface EmployeeRepository extends Repository<Employee, Long> {
     Optional<Employee> updateLastName(Long employeeId, String newLastName);
     List<Employee> findByFirstNameAndLastName(String firstName, String lastName);
-    List<Employee> findByCreatedData(LocalDateTime createdData);
+    List<Employee> findByCreatedDate(LocalDateTime createdDate);
 }
