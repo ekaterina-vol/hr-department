@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 public class EmployeeHistory {
     private Long historyId;
-    private LocalDateTime changeData;
+    private LocalDateTime changeDate;
     private Long employeeId;
     private String lastName;
 }
