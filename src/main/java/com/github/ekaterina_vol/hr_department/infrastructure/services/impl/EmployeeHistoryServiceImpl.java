@@ -3,17 +3,15 @@ package com.github.ekaterina_vol.hr_department.infrastructure.services.impl;
 import com.github.ekaterina_vol.hr_department.domain.entities.EmployeeHistory;
 import com.github.ekaterina_vol.hr_department.domain.repositories.EmployeeHistoryRepository;
 import com.github.ekaterina_vol.hr_department.infrastructure.services.EmployeeHistoryService;
+import lombok.AllArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 public class EmployeeHistoryServiceImpl implements EmployeeHistoryService {
     private final EmployeeHistoryRepository employeeHistoryRepository;
-
-    public EmployeeHistoryServiceImpl(EmployeeHistoryRepository employeeHistoryRepository) {
-        this.employeeHistoryRepository = employeeHistoryRepository;
-    }
 
     @Override
     public EmployeeHistory create(EmployeeHistory entity) {

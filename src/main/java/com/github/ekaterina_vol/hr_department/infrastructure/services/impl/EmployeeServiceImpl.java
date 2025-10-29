@@ -3,17 +3,15 @@ package com.github.ekaterina_vol.hr_department.infrastructure.services.impl;
 import com.github.ekaterina_vol.hr_department.domain.entities.Employee;
 import com.github.ekaterina_vol.hr_department.domain.repositories.EmployeeRepository;
 import com.github.ekaterina_vol.hr_department.infrastructure.services.EmployeeService;
+import lombok.AllArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
-
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
 
     public Employee create(final Employee entity) {
         if (entity == null) {

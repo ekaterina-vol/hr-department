@@ -3,16 +3,14 @@ package com.github.ekaterina_vol.hr_department.infrastructure.services.impl;
 import com.github.ekaterina_vol.hr_department.domain.entities.Post;
 import com.github.ekaterina_vol.hr_department.domain.repositories.PostRepository;
 import com.github.ekaterina_vol.hr_department.infrastructure.services.PostService;
+import lombok.AllArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
-
-    public PostServiceImpl(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
 
     public Post create(Post entity) {
         if (entity == null) {
