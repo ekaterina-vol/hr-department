@@ -17,7 +17,6 @@ public class PostServiceImpl implements PostService {
             throw new IllegalArgumentException("Получена пустая сущность");
         }
 
-        validatePostId(entity.getPostId());
         validateTitle(entity.getTitle());
         validateDepartment(entity.getDepartment());
 
@@ -107,13 +106,13 @@ public class PostServiceImpl implements PostService {
     }
 
     private void validateTitle(String title) {
-        if (title == null || !title.isEmpty()) {
+        if (title == null || title.isEmpty()) {
             throw new IllegalArgumentException("Отсутствует название должности");
         }
     }
 
     private void validateDepartment(String department) {
-        if (department == null || !department.isEmpty()) {
+        if (department == null || department.isEmpty()) {
             throw new IllegalArgumentException("Отсутствует название отдела");
         }
     }

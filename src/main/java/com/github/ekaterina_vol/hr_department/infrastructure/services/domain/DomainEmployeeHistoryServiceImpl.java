@@ -11,10 +11,10 @@ import java.util.List;
 @AllArgsConstructor
 public class DomainEmployeeHistoryServiceImpl implements EmployeeHistoryService {
     private final EmployeeHistoryService employeeHistoryService;
-    private final EmployeeService domainEmployeeService;
+    private final EmployeeService employeeService;
     @Override
     public EmployeeHistory create(EmployeeHistory entity) {
-        domainEmployeeService.findById(entity.getEmployeeId());
+        employeeService.findById(entity.getEmployeeId());
         return employeeHistoryService.create(entity);
     }
 
@@ -30,7 +30,7 @@ public class DomainEmployeeHistoryServiceImpl implements EmployeeHistoryService 
 
     @Override
     public EmployeeHistory update(EmployeeHistory entity) {
-        domainEmployeeService.findById(entity.getEmployeeId());
+        employeeService.findById(entity.getEmployeeId());
         return employeeHistoryService.update(entity);
     }
 

@@ -18,8 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new IllegalArgumentException("Получена пустая сущность");
         }
 
-        validateEmployeeId(entity.getEmployeeId());
-        validateFirstName(entity.getFirstName());
         validateLastName(entity.getLastName());
         validateBirthDate(entity.getBirthDate());
         validateSex(entity.getSex());
@@ -132,13 +130,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     private void validateFirstName(String firstName) {
-        if (firstName == null || !firstName.isEmpty()) {
+        if (firstName == null || firstName.isEmpty()) {
             throw new IllegalArgumentException("Отсутствует имя");
         }
     }
 
     private void validateLastName(String lastName) {
-        if (lastName == null || !lastName.isEmpty()) {
+        if (lastName == null || lastName.isEmpty()) {
             throw new IllegalArgumentException("Отсутствует фамилия");
         }
     }

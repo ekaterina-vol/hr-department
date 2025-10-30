@@ -1,10 +1,15 @@
 package com.github.ekaterina_vol.hr_department;
 
-/**
- * Hello world!
- */
+import com.github.ekaterina_vol.hr_department.app.cli.CliApp;
+import com.github.ekaterina_vol.hr_department.domain.repositories.inmemory.InMemoryStorage;
+import com.github.ekaterina_vol.hr_department.infrastructure.services.ServiceProvider;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        InMemoryStorage storage = InMemoryStorage.getInstance();
+        ServiceProvider serviceProvider = new ServiceProvider(storage);
+        CliApp cliApp = new CliApp(serviceProvider);
+
+        cliApp.run();
     }
 }

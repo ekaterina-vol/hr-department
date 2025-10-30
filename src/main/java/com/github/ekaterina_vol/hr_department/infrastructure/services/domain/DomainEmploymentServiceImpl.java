@@ -12,13 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 public class DomainEmploymentServiceImpl implements EmploymentService {
     private final EmploymentService employmentService;
-    private final EmployeeService domainEmployeeService;
-    private final PostService domainPostService;
+    private final EmployeeService employeeService;
+    private final PostService postService;
 
     @Override
     public Employment create(Employment entity) {
-        domainEmployeeService.findById(entity.getEmployeeId());
-        domainPostService.findById(entity.getPostId());
+        employeeService.findById(entity.getEmployeeId());
+        postService.findById(entity.getPostId());
         return employmentService.create(entity);
     }
 
@@ -34,8 +34,8 @@ public class DomainEmploymentServiceImpl implements EmploymentService {
 
     @Override
     public Employment update(Employment entity) {
-        domainEmployeeService.findById(entity.getEmployeeId());
-        domainPostService.findById(entity.getPostId());
+        employeeService.findById(entity.getEmployeeId());
+        postService.findById(entity.getPostId());
         return employmentService.update(entity);
     }
 

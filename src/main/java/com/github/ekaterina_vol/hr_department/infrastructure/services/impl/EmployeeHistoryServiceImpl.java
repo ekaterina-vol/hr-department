@@ -119,7 +119,7 @@ public class EmployeeHistoryServiceImpl implements EmployeeHistoryService {
     }
 
     private void validateLastName(String lastName) {
-        if (lastName == null || !lastName.isEmpty()) {
+        if (lastName == null || lastName.isEmpty()) {
             throw new IllegalArgumentException("Отсутствует фамилия");
         }
     }

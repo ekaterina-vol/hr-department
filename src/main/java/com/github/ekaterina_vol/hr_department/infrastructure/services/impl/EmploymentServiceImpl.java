@@ -18,7 +18,6 @@ public class EmploymentServiceImpl implements EmploymentService {
             throw new IllegalArgumentException("Получена пустая сущность");
         }
 
-        validateEmploymentId(entity.getEmploymentId());
         validateEmployeeId(entity.getEmployeeId());
         validatePostId(entity.getPostId());
         validateStartDate(entity.getStartDate());

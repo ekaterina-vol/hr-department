@@ -58,8 +58,8 @@ public class PostRepositoryImpl implements PostRepository {
 
         Optional<Post> uniquePost = findByDepartmentAndTitle(entity.getDepartment(), entity.getTitle());
         if (uniquePost.isPresent()
-                && !curPost.getDepartment().equals(uniquePost.get().getDepartment())
-                && !curPost.getTitle().equals(uniquePost.get().getTitle())) {
+                && (!curPost.getDepartment().equals(uniquePost.get().getDepartment())
+                || !curPost.getTitle().equals(uniquePost.get().getTitle()))) {
             return uniquePost;
         }
 
