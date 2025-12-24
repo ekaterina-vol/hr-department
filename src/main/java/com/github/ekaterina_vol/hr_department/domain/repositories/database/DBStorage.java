@@ -1,11 +1,6 @@
 package com.github.ekaterina_vol.hr_department.domain.repositories.database;
 
 import com.github.ekaterina_vol.hr_department.domain.repositories.Storage;
-import com.github.ekaterina_vol.hr_department.domain.repositories.inmemory.EmployeeHistoryRepositoryImpl;
-import com.github.ekaterina_vol.hr_department.domain.repositories.inmemory.EmployeeRepositoryImpl;
-import com.github.ekaterina_vol.hr_department.domain.repositories.inmemory.EmploymentRepositoryImpl;
-import com.github.ekaterina_vol.hr_department.domain.repositories.inmemory.InMemoryStorage;
-import com.github.ekaterina_vol.hr_department.domain.repositories.inmemory.PostRepositoryImpl;
 import lombok.Getter;
 
 @Getter

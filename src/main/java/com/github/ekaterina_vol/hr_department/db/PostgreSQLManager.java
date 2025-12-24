@@ -29,7 +29,7 @@ public class PostgreSQLManager {
 
             connection = DriverManager.getConnection(url, user, password);
             Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TYPE GENDER_TYPE AS ENUM ('male', 'female')");
+//            stmt.executeUpdate("CREATE TYPE IF NOT EXISTS GENDER_TYPE AS ENUM ('male', 'female')");
             stmt.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS employee ( " +
                             "employee_id SERIAL PRIMARY KEY, " +
@@ -43,7 +43,7 @@ public class PostgreSQLManager {
             stmt.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS post ( " +
                             "post_id SERIAL PRIMARY KEY, " +
-                            "title VARCHAR(100) NOT NULL " +
+                            "title VARCHAR(100) NOT NULL, " +
                             "department VARCHAR(100) NOT NULL " +
                             ")"
             );
