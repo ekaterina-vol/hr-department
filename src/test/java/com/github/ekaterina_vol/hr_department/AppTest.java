@@ -1,4 +1,6 @@
-package com.github.ekaterina-vol.hr-department;
+package com.github.ekaterina_vol.hr_department
+
+-vol.hr-department;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
